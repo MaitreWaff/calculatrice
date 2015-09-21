@@ -21,6 +21,7 @@ class Main(QtGui.QMainWindow, Calculatrice.Ui_Calculatrice):
         self.setupUi(self)
 
         self.listelts = []
+        self.model = QStringListModel()
 
         self.connect(self.pb0, SIGNAL("clicked()"), lambda who="Zero": self.clickBtn(who))
         self.connect(self.pb1, SIGNAL("clicked()"), lambda who="One": self.clickBtn(who))
@@ -46,6 +47,7 @@ class Main(QtGui.QMainWindow, Calculatrice.Ui_Calculatrice):
         print "%s Clicked!" % str(who)
         self.listelts.append(str(who))
         self.model = QStringListModel(self.listelts)
+        # self.model.createIndex(len(self.listelts), 0, self.listelts[len(self.listelts)-1])
         self.screen.setModel(self.model)
 
 
